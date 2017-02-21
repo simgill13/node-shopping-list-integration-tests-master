@@ -5,7 +5,7 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('/Recipes RESTful Tests', function() {
+describe('/Recipes RESTful Tests', function(){
 
   before(function(){
     return runServer();
@@ -57,6 +57,26 @@ describe('/Recipes RESTful Tests', function() {
     })
     .then(function(res){
       res.should.have.status(204);
+    });
+  });
+  //put test
+  it('testing for PUT calls to /Recipes', function(){
+    const updatedRecipe = { name : "Jared's Baby Back Ribs", ingredients : ["Ribs", "Babies", "Backs", "Jared"]};
+
+    return chai.request(app)
+    .get('/Recipes')
+    .then(function(res){
+      updatedRecipe.id = res.body[0].id;
+      return chai.request(app)
+      .put(`/Recipes/${updatedRecipe.id}`)
+      .send(updatedRecipe);
+    })
+    .then(function(res){
+      res.should.have.status(200);
+      res.should.be.json;
+      res.body.should.be.a('object');
+      res.body.ingredients.should.be.a('array');
+      res.body.should.deep.equal(updatedRecipe);
     });
   });
 });
