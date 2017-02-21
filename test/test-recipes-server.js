@@ -14,7 +14,7 @@ describe('Recipies test', function() {
     return closeServer();
   });
   //get test
-  it('testing the GET responce for Recipes', function(){
+  it('testing for GET calls to Recipes', function(){
     return chai.request(app)
     .get('/Recipes')
     .then(function(res) {
@@ -31,7 +31,7 @@ describe('Recipies test', function() {
     });
   });
   //post test
-  it('testing the POST response for Recipes', function(){
+  it('testing for POST calls to Recipes', function(){
     const newRecipe = {name:"simran's baby back ribs", ingredients: ['1 cup white rice', '2 cups water', 'pinch of salt']};
 
     return chai.request(app)
@@ -48,7 +48,7 @@ describe('Recipies test', function() {
     });
   });
   //delete test
-  
+  it('testing for DELETE calls to Recipes')
 });
 
 
