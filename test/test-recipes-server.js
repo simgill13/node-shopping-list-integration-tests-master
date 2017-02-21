@@ -1,23 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-
 const {app, runServer, closeServer} = require('../server');
-
-// this lets us use *should* style syntax in our tests
-// so we can do things like `(1 + 1).should.equal(2);`
-// http://chaijs.com/api/bdd/
 const should = chai.should();
 
-// This let's us make HTTP requests
-// in our tests.
-// see: https://github.com/chaijs/chai-http
 chai.use(chaiHttp);
-
-
-
-
-
-
 
 describe('Recipies test', function() {
 
@@ -27,8 +13,8 @@ describe('Recipies test', function() {
   after(function(){
     return closeServer();
   });
-
-  it('testing the GET responce for Recipies', function(){
+  //get test
+  it('testing the GET responce for Recipes', function(){
     return chai.request(app)
     .get('/Recipes')
     .then(function(res) {
@@ -44,11 +30,10 @@ describe('Recipies test', function() {
       });
     });
   });
+  //post test
+  it('testing the POST response for Recipes', function(){
+    const newRecipe = {name:"simran's baby back ribs", ingredients: ['1 cup white rice', '2 cups water', 'pinch of salt']};
 
-
-  it('tesint the POST response for Recipies', function(){
-
-  const newRecipe = {name:"simran's baby back ribs", ingredients: ['1 cup white rice', '2 cups water', 'pinch of salt']}
     return chai.request(app)
     .post('/Recipes')
     .send(newRecipe)
@@ -62,6 +47,8 @@ describe('Recipies test', function() {
         res.body.should.deep.equal(Object.assign(newRecipe, {id: res.body.id}));
     });
   });
+  //delete test
+  
 });
 
 
