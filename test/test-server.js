@@ -14,7 +14,7 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('Shopping List', function() {
+describe.skip('Shopping List', function() {
 
   // Before our tests run, we activate the server. Our `runServer`
   // function returns a promise, and we return the that promise by
