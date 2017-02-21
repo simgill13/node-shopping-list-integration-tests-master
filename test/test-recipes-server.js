@@ -13,6 +13,7 @@ describe('/Recipes RESTful Tests', function(){
   after(function(){
     return closeServer();
   });
+  
   //get test
   it('testing for GET calls to /Recipes', function(){
     return chai.request(app)
@@ -30,6 +31,7 @@ describe('/Recipes RESTful Tests', function(){
       });
     });
   });
+
   //post test
   it('testing for POST calls to /Recipes', function(){
     const newRecipe = {name:"simran's baby back ribs", ingredients: ['1 cup white rice', '2 cups water', 'pinch of salt']};
@@ -47,6 +49,7 @@ describe('/Recipes RESTful Tests', function(){
         res.body.should.deep.equal(Object.assign(newRecipe, {id: res.body.id}));
     });
   });
+
   //delete test
   it('testing for DELETE calls to /Recipes', function(){
     return chai.request(app)
@@ -59,6 +62,7 @@ describe('/Recipes RESTful Tests', function(){
       res.should.have.status(204);
     });
   });
+
   //put test
   it('testing for PUT calls to /Recipes', function(){
     const updatedRecipe = { name : "Jared's Baby Back Ribs", ingredients : ["Ribs", "Babies", "Backs", "Jared"]};
