@@ -1,5 +1,6 @@
 Shopping list v5
 ================
+[![Build Status](https://travis-ci.org/simgill13/node-shopping-list-integration-tests-master.svg?branch=master)](https://travis-ci.org/simgill13/node-shopping-list-integration-tests-master)
 
 https://github.com/Thinkful-Ed/node-shopping-list-v5
 
